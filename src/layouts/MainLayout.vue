@@ -21,12 +21,12 @@ import HeaderItem from '@/component/HeaderItem.vue'
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding: 40px;
+  padding: 50px;
   box-sizing: border-box;
 
   .content {
     flex: 1;
-    background-color: $container;
+    background-color: $container-bg-light;
     border-radius: $content-border-radius;
     box-shadow: $shadow-1;
   }

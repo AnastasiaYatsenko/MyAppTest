@@ -2,12 +2,31 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
 
+html {
+  font-size: 16px;
+}
+
 body {
   font-family: $font-family;
   margin: 0;
   padding: 0;
   color: $color-dark;
-  background-color: $page;
+  background-color: $main-bg-light;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 100%;
+  letter-spacing: 0px;
+}
+
+.text-title {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 140%;
+}
+
+.text-secondary {
+  color: $color-secondary;
 }
 
 .container {
