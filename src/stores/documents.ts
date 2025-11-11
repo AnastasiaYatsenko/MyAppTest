@@ -11,7 +11,7 @@ export const useDocumentsStore = defineStore('documents', {
     isLoading: false as boolean,
   }),
   actions: {
-    setActiveDocumentId(id: number) {
+    setActiveDocumentId(id: number | null) {
       this.activeDocumentId = id
     },
     setDocuments(docs: Document[]) {
@@ -23,6 +23,8 @@ export const useDocumentsStore = defineStore('documents', {
     async loadDocuments() {
       try {
         this.isLoading = true
+        this.setActiveDocumentId(null)
+
         const data = await fetchDocumentsApi(this.searchQuery)
 
         this.setDocuments(data)
