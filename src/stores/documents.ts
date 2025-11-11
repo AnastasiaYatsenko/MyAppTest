@@ -20,6 +20,14 @@ export const useDocumentsStore = defineStore('documents', {
     setSearchQuery(query: string) {
       this.searchQuery = query
     },
+    deleteDocument(id: number) {
+      const index = this.documents.findIndex((document) => document.id === id)
+      if (index !== -1) {
+        this.documents.splice(index, 1)
+      }
+
+      this.setActiveDocumentId(null)
+    },
     async loadDocuments() {
       try {
         if (!this.searchQuery.trim()) {
