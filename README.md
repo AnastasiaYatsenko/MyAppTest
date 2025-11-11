@@ -1,27 +1,47 @@
-# .
+# Примечания
+> В инпуте поиска документа необходимо реализовать запрос к API для получения 
+необходимых документов. 
 
-This template should help get you started developing with Vue 3 in Vite.
+Изучив дизайн было принято решение инпут сделать переиспользуемым компонентом, который только возвращает данные родителю. А вот уже родитель может посупать с ними как необходимо (В данном случае вызов находится в хранилище и триггерится из сайдбара).
 
-## Recommended IDE Setup
+> Кнопка “Удалить” должна быть активной, в случае если у документа есть изображение...
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+В данной ситуации решила изображение с битой ссылкой считать как присутсвующее, поэтому кнопка в такой ситуации будет активна.
 
-## Recommended Browser Setup
+### Размер файла документа в списке
+[![Screenshot-3.png](https://i.postimg.cc/FHvkJ7X2/Screenshot-3.png)](https://postimg.cc/PP65gfx4)
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+Подобные данные обычно рассчитываются на бэкенде. Считать их на фронте в реальном приложении было бы неэффективно, поэтому я использовала статические данные. Если же это была часть задания, я готова рассказать, как такую задачу можно реализовать, если учитывать исключительно текстовые данные.
 
-## Type Support for `.vue` Imports in TS
+### О стилях и разметке
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+При изучении макета обнаружила несоответствие правых и левых паддингов у некоторых элементов и привела их к общему виду. Разница была небольшая — всего несколько пикселей. Добавила сброс стилей и небольшое количество переменных, чтобы сымитировать внешний UI-kit. Не стала усложнять, так как неизвестно, в какое приложение будет добавлена эта страница и насколько индивидуален её дизайн. Остальные стили написаны и изолированы непосредственно в компонентах.
 
-## Customize configuration
+### Поведение поиска
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+При пустом инпуте список документов очищается. В данном варианте запросов пагинация не поддерживается, поэтому безопаснее вызывать метод только с фильтрацией. Это не полностью исключает получение большого массива данных, но такой подход кажется логичным для текущей реализации.
+
+### Адаптивность
+
+Так как мобильной версии дизайна нет, решила не усложнять и рассматривать приложение как исключительно десктопное. Подкорректировала верстку компонента просмотра документа. Также были добавлены скроллы в потенциально длинных компонентах (список документов, окно просмотра документа).
+
+### Что можно улучшить / поправить
+
+1. store/counter.ts - неиспользуемый модуль, забыла удалить, прошу прощения.
+2. utils/debounce.ts - при пересмотре поняла, что один any можно заменить на unknown для большей типовой безопасности.
+3. styles/_mixins.scss - изначально планировала создать миксин для брейкпойнтов, но он не был использован.
+4. Потеря фокуса инпута после получения данных — заметила уже после сдачи задания, но могу рассказать, как это исправить.
+
+## Docker
+### Build Docker Image
+```sh
+docker build -t my-app-prod .
+```
+
+### Run Container
+```sh
+docker run -p 80:80 my-app-prod
+```
 
 ## Project Setup
 
