@@ -22,6 +22,11 @@ export const useDocumentsStore = defineStore('documents', {
     },
     async loadDocuments() {
       try {
+        if (!this.searchQuery.trim()) {
+          this.setDocuments([])
+          return
+        }
+
         this.isLoading = true
         this.setActiveDocumentId(null)
 
