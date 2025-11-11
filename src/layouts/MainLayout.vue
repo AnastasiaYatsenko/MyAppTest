@@ -5,15 +5,13 @@
     </div>
 
     <div class="container content">
-      <main>
-        <router-view />
-      </main>
+      <router-view />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import HeaderItem from '@/component/HeaderItem.vue'
+import HeaderItem from '@/components/HeaderItem.vue'
 </script>
 
 <style lang="scss" scoped>
@@ -29,6 +27,8 @@ import HeaderItem from '@/component/HeaderItem.vue'
     background-color: $content-bg-light;
     border-radius: $content-border-radius;
     box-shadow: $shadow-1;
+    display: flex;
+    align-items: stretch;
   }
 }
 </style>
