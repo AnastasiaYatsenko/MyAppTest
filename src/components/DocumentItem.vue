@@ -47,7 +47,6 @@ function handleClick(): void {
   border: none;
   width: 100%;
   background-color: $white;
-  cursor: pointer;
 
   &__image {
     object-fit: cover;
