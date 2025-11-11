@@ -20,7 +20,7 @@ import HeaderItem from '@/components/HeaderItem.vue'
   flex-direction: column;
   min-height: 100vh;
   padding: 50px;
-  box-sizing: border-box;
+  max-height: 100vh;
 
   .content {
     flex: 1;
@@ -29,6 +29,8 @@ import HeaderItem from '@/components/HeaderItem.vue'
     box-shadow: $shadow-1;
     display: flex;
     align-items: stretch;
+    height: 100%;
+    overflow: hidden;
   }
 }
 </style>
