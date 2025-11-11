@@ -21,7 +21,7 @@
           <li v-for="document in documents" :key="document.id">
             <document-item
               :document="document"
-              :is-active="document.id === activeDocument"
+              :is-active="document.id === activeDocumentId"
               @document-clicked="onDocumentClicked"
             />
           </li>
@@ -43,10 +43,10 @@ const store = useDocumentsStore()
 const documentId = ref<string>('')
 const documents = computed(() => store.documents)
 
-const activeDocument = computed(() => store.activeDocument)
+const activeDocumentId = computed(() => store.activeDocumentId)
 
 function onDocumentClicked(id: number) {
-  store.setActiveDocument(id)
+  store.setActiveDocumentId(id)
 }
 
 watch(documentId, (newVal) => {

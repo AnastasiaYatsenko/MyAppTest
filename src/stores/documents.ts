@@ -5,14 +5,14 @@ import { fetchDocuments as fetchDocumentsApi } from '@/api/documents'
 export const useDocumentsStore = defineStore('documents', {
   state: () => ({
     documents: [] as Document[],
-    activeDocument: null as number | null,
+    activeDocumentId: null as number | null,
     searchQuery: '' as string,
     error: '' as string,
     isLoading: false as boolean,
   }),
   actions: {
-    setActiveDocument(id: number) {
-      this.activeDocument = id
+    setActiveDocumentId(id: number) {
+      this.activeDocumentId = id
     },
     setDocuments(docs: Document[]) {
       this.documents = docs
@@ -36,5 +36,9 @@ export const useDocumentsStore = defineStore('documents', {
         this.isLoading = false
       }
     },
+  },
+  getters: {
+    activeDocument: (state) =>
+      state.documents.find((doc) => doc.id === state.activeDocumentId) || null,
   },
 })
