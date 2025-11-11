@@ -4,6 +4,7 @@
     :type="type"
     :placeholder="placeholder"
     :value="modelValue"
+    :disabled="isLoading"
     @input="handleInput"
   />
 </template>
@@ -15,6 +16,7 @@ interface Props {
   type?: 'text' | 'number' | 'email' | 'password' | 'tel' | 'url'
   placeholder?: string
   modelValue?: string | number
+  isLoading?: boolean
 }
 
 interface Emits {
@@ -57,6 +59,11 @@ const handleInput = (event: Event) => {
 
   &::placeholder {
     color: $color-secondary;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: .7;
   }
 }
 </style>
