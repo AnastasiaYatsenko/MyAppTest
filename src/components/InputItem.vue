@@ -51,7 +51,6 @@ const handleInput = (event: Event) => {
   padding-left: 24px;
   padding-right: 24px;
   height: 49px;
-  box-sizing: border-box;
   border-radius: $border-radius;
   color: $color-dark;
   border: 2px solid $gray-200;
