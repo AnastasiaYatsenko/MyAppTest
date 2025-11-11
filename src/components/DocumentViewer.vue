@@ -21,6 +21,7 @@
           <button
             class="document-viewer__button document-viewer__button--danger"
             @click="handleDelete"
+            :disabled="!document.image"
           >
             Удалить
           </button>
