@@ -26,7 +26,7 @@ import HeaderItem from '@/component/HeaderItem.vue'
 
   .content {
     flex: 1;
-    background-color: $container-bg-light;
+    background-color: $content-bg-light;
     border-radius: $content-border-radius;
     box-shadow: $shadow-1;
   }
